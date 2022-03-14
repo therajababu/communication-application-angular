@@ -11,9 +11,12 @@ import { RegisterSuccessfulComponent } from './register-successful/register-succ
 import { UsersManagementComponent } from './users-management/users-management.component';
 import { ManageDocumentsComponent } from './manage-documents/manage-documents.component';
 import { GroupChatComponent } from './group-chat/group-chat.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // we need to add all components
     AppComponent,
     WelcomeComponent,
     LoginComponent,
@@ -22,13 +25,17 @@ import { GroupChatComponent } from './group-chat/group-chat.component';
     RegisterSuccessfulComponent,
     UsersManagementComponent,
     ManageDocumentsComponent,
-    GroupChatComponent
+    GroupChatComponent,
+    NavbarComponent
   ],
-  imports: [
+  imports: [  // importing all modules
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // default component
 })
 export class AppModule { }

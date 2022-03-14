@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="container form-page-container">
+
+    <!-- Start: Form-->
+    <form novalidate [formGroup]="loginForm" (submit)="login()">
+        <table class="form-table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h3>Login</h3>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-right"><label>Email</label></td>
+                    <td>
+                        <input type="text" class="form-input-field" formControlName="email"
+                            placeholder="Enter your email">
+                        <div *ngIf="loginForm.get('email')?.errors?.['required']">Enter your email.</div>
+                        <div *ngIf="loginForm.get('email')?.errors?.['minlength']">Email must be atleast 5 characters longer
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label>Password</label></td>
+                    <td>
+                        <input type="password" class="form-input-field" formControlName="password"
+                            placeholder="Enter your password">
+                        <div *ngIf="loginForm.get('password').errors?.['required']">Enter your password.</div>
+                        <div *ngIf="loginForm.get('password').errors?.['minlength']">Password must be atleast 4 characters
+                        longer</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Login" class="form-custom-button aqua-button"
+                            [disabled]="!loginForm.valid">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- End: Form-->
+</div>

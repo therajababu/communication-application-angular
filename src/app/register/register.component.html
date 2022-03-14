@@ -1,1 +1,69 @@
-<p>register works!</p>
+<div class="container form-page-container">
+    <!-- Start: Form-->
+    <form novalidate [formGroup]="registerForm" (submit)="register()">
+        <table class="form-table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h3>Register</h3>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-right"><label>Full Name</label></td>
+                    <td><input type="text" id="fullName" class="form-input-field" formControlName="fullName"
+                            placeholder="Enter Name">
+                        <p *ngIf="registerForm.get('fullName').errors?.['required']">Enter your full name.</p>
+                        <p *ngIf="registerForm.get('fullName').errors?.['minlength']">Full Name must be atleast 2
+                            characters longer
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="email">Email</label></td>
+                    <td>
+                        <input type="text" id="email" class="form-input-field" formControlName="email"
+                            placeholder="Enter Email">
+                        <div *ngIf="registerForm.get('email').errors?.['required']">Enter your email.</div>
+                        <div *ngIf="registerForm.get('email').errors?.['email']">Enter valid email.</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right"><label for="password">Password</label></td>
+                    <td>
+                        <input type="password" id="password" class="form-input-field" formControlName="password"
+                            placeholder="Enter Password">
+                        <div *ngIf="registerForm.get('password').errors?.['required']">Enter your Password.</div>
+                        <div *ngIf="registerForm.get('password').errors?.['minlength']">Password must be atleast 4
+                            characters longer
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form-lable-right"><label for="confirmPassword">Confirm Password</label></td>
+                    <td>
+                        <input type="password" id="confirmPassword" class="form-input-field"
+                            formControlName="confirmPassword" placeholder="Confirm Password">
+                        <div *ngIf="registerForm.get('confirmPassword').errors?.['required']">Enter your Password.</div>
+                        <div *ngIf="registerForm.get('confirmPassword').errors?.['minlength']">Password must be atleast
+                            4 characters longer
+                        </div>
+                        <div *ngIf="registerForm.get('password').value !== registerForm.get('confirmPassword').value">
+                            Password should match
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td>
+                        <input type="submit" value="Register" class="form-custom-button aqua-button"
+                            [disabled]="!registerForm.valid">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <!-- End : Form-->
+</div>
