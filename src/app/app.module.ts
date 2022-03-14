@@ -14,6 +14,7 @@ import { GroupChatComponent } from './group-chat/group-chat.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [ // we need to add all components
@@ -26,7 +27,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     UsersManagementComponent,
     ManageDocumentsComponent,
     GroupChatComponent,
-    NavbarComponent
+    NavbarComponent,
+    LogoutComponent
   ],
   imports: [  // importing all modules
     BrowserModule,

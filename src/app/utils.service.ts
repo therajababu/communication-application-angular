@@ -19,4 +19,18 @@ export class UtilsService {
     let data = getFromLocalStorage ? getFromLocalStorage : [];
     return data; // returning array of object
   }
+
+  getUserById(id) {
+    let users = this.getFromLocalStorage("users");
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].id == id) {
+        let user = users[i];
+        // deleting password
+        delete user.password;
+        return user;
+      }
+    }
+  }
+
+
 }
