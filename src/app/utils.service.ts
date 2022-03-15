@@ -20,7 +20,28 @@ export class UtilsService {
     return data; // returning array of object
   }
 
-  getUserById(id) {
+  loggedInUserId(): string {
+    // return user id else null
+    let getFromLocalStorage = JSON.parse(localStorage.getItem("LOGGED_IN_USER_ID"));
+    if (getFromLocalStorage === undefined || getFromLocalStorage == null) {
+      return null;
+    } else {
+      return getFromLocalStorage;
+    }
+  }
+
+  isEmailValid(email: string): boolean {
+    let aPos = email.indexOf("@");
+    let dotPos = email.lastIndexOf(".");
+
+    if (aPos < 1 || dotPos - aPos < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  getUserById(id: string) {
     let users = this.getFromLocalStorage("users");
     for (let i = 0; i < users.length; i++) {
       if (users[i].id == id) {

@@ -11,13 +11,13 @@ import { UtilsService } from '../utils.service';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  LOGGED_IN_USER_ID : string ;
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private UtilsService: UtilsService,
     private router: Router
-    
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login() : void {
-
+  login(): void {
     // Getting user data
     let users = this.UtilsService.getFromLocalStorage("users");
 
@@ -38,10 +37,10 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < users.length; i++) {
       if (users[i].email == email && users[i].password == password) {
         // user is found in database
-        let LOGGED_IN_USER_ID: number = users[i].id;
+        this.LOGGED_IN_USER_ID = users[i].id;
 
         // saving to local storage
-        this.UtilsService.setToLocalStorage("LOGGED_IN_USER_ID", LOGGED_IN_USER_ID);
+        this.UtilsService.setToLocalStorage("LOGGED_IN_USER_ID", this.LOGGED_IN_USER_ID);
 
         // allow to be redirected to login successful page
         this.router.navigate(['/login-successful']);
@@ -50,7 +49,5 @@ export class LoginComponent implements OnInit {
     }
     // user dont exist
     alert("Enter correct email & password!");
-    return;
   }
-
 }

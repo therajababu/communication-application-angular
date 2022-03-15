@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UtilsService } from '../utils.service';
 
 @Component({
@@ -11,7 +12,11 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup
 
-  constructor(private fb: FormBuilder, private UtilsService: UtilsService) { }
+  constructor(
+    private fb: FormBuilder,
+    private UtilsService: UtilsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -22,7 +27,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  register() {
+  register() : void{
     let users = this.UtilsService.getFromLocalStorage("users");
 
     let fullName = this.registerForm.get('fullName')?.value;
@@ -30,9 +35,15 @@ export class RegisterComponent implements OnInit {
     let password = this.registerForm.get('password')?.value;
     let confirmPassword = this.registerForm.get('confirmPassword')?.value;
 
+    if(!this.UtilsService.isEmailValid(email)){
+      // email is invalid
+      alert("Email is invalid!");
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert("Both password should match!");
-      return false;
+      return;
     }
 
     let userObj = {
@@ -47,10 +58,10 @@ export class RegisterComponent implements OnInit {
       users.push(userObj);
       this.UtilsService.setToLocalStorage("users", users);
       // user will be redirected to register successful page
-      return true;
+      this.router.navigateByUrl('register-successful');
     } else {
       // checking for existing record
-      let isUserExist = false;
+      let isUserExist: boolean = false;
       for (let i = 0; i < users.length; i++) {
         if (users[i].email == email) {
           isUserExist = true;
@@ -60,13 +71,12 @@ export class RegisterComponent implements OnInit {
       if (isUserExist) {
         //alert
         alert("This email/user already exists!");
-        return false;
       } else {
         // save user
         users.push(userObj);
         this.UtilsService.setToLocalStorage("users", users);
         // user will be redirected to register successful page
-        return true;
+        this.router.navigateByUrl('register-successful');
       }
     }
   }

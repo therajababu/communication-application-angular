@@ -1,2 +1,31 @@
 <app-navbar></app-navbar>
-<p>group-chat works!</p>
+<br><br>
+<div class="container-fluid chat-window">
+    <!-- Group Chat Bar -->
+    <div class="row">
+        <div class="col-md-11 text-center text-bold">Group Chat</div>
+        <div class="col-md-1 text-center">
+            <a><button class="group-chat-cross-button"> X</button></a>
+        </div>
+    </div>
+    <!-- Chat Window -->
+    <div class="group-chat-box">
+        <p id="group-chat-messages">
+            <!-- all users messages will appear here -->
+        </p>
+    </div>
+    <!-- Chat Footer -->
+    <div class="row group-chat-send-box">
+        <div class="col-md-2 text-right" id="user-full-name">
+            <!-- user full name -->
+        </div>
+        <div class="col-md-8">
+            <input type="text" id="msg-input-group-chat" class="grou-chat-msg-input"
+                placeholder=" Type your message ...">
+        </div>
+        <div class="col-md-2">
+            <button class="group-chat-button" onclick="sendMessageGroupChat()">Send</button>
+            <button class="group-chat-button" onclick="refeshMessagesGroupChat()">Refresh</button>
+        </div>
+    </div>
+</div>
