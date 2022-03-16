@@ -10,22 +10,26 @@
     </div>
     <!-- Chat Window -->
     <div class="group-chat-box">
-        <p id="group-chat-messages">
-            <!-- all users messages will appear here -->
-        </p>
+        <div *ngFor="let msg of displayMessages">
+            {{msg}}
+        </div>
+
     </div>
     <!-- Chat Footer -->
-    <div class="row group-chat-send-box">
-        <div class="col-md-2 text-right" id="user-full-name">
-            <!-- user full name -->
+    <form novalidate [formGroup]="messageForm" (submit)="onSend()">
+        <div class="row group-chat-send-box">
+            <div class="col-md-2 text-right" id="user-full-name">
+                <!-- user full name -->
+                {{fullName}}
+            </div>
+            <div class="col-md-8">
+                <input type="text" formControlName="message" class="grou-chat-msg-input"
+                    placeholder=" Type your message...">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="group-chat-button" [disabled]="!messageForm.valid">Send</button>
+                <button type="button" class="group-chat-button" (click)="onRefresh()">Refresh</button>
+            </div>
         </div>
-        <div class="col-md-8">
-            <input type="text" id="msg-input-group-chat" class="grou-chat-msg-input"
-                placeholder=" Type your message ...">
-        </div>
-        <div class="col-md-2">
-            <button class="group-chat-button" onclick="sendMessageGroupChat()">Send</button>
-            <button class="group-chat-button" onclick="refeshMessagesGroupChat()">Refresh</button>
-        </div>
-    </div>
+    </form>
 </div>

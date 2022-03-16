@@ -1,2 +1,59 @@
 <app-navbar></app-navbar>
-<p>users-management works!</p>
+
+<div class="container-fluid manage-user-page-container">
+    <h4>Users</h4>
+    <div class="table-container">
+        <table class="table  table-bordered table-striped">
+            <thead>
+                <tr class="table-tr-grey">
+                    <th>Name</th>
+                    <th class="text-center">User Email ID</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody id="user-list-table-body">
+                <tr *ngFor="let user of users">
+                    <td>
+                        <a class="no-underline" [routerLink]="['/user-detail', user.id]">
+                            {{user.fullName}}
+                        </a>
+                    </td>
+                    <td class="text-center">{{user.email}}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/edit-users', user.id]"><button type="button" id={{user.id}}
+                                class="btn ">Edit</button></a> |
+                        <button type="button" id={{user.id}} class="btn" data-bs-toggle="modal"
+                            data-bs-target="#deleteUserModal">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Start: Delete User Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModal" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content confirm-modal-content ">
+            <div class="modal-header">
+                <p class="modal-title" id="deleteUserModal">Confirm User Deletion</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    <br>
+                    <img src="./assets/images/question.png" class="question-img">
+                    Are you sure ?
+                </p>
+            </div>
+            <div class="modal-footer confirm-modal-footer">
+                <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal"
+                    onclick="userDeleteOk()">Ok</button>
+                <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Delete User Modal -->

@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [ // we need to add all components
@@ -28,7 +29,8 @@ import { LogoutComponent } from './logout/logout.component';
     ManageDocumentsComponent,
     GroupChatComponent,
     NavbarComponent,
-    LogoutComponent
+    LogoutComponent,
+    UserDetailComponent
   ],
   imports: [  // importing all modules
     BrowserModule,

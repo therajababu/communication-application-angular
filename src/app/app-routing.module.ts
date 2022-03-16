@@ -9,6 +9,7 @@ import { GroupChatComponent } from './group-chat/group-chat.component';
 import { UsersManagementComponent } from './users-management/users-management.component';
 import { ManageDocumentsComponent } from './manage-documents/manage-documents.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register-successful', component: RegisterSuccessfulComponent },
   { path: 'chat', component: GroupChatComponent },
   { path: 'users-management', component: UsersManagementComponent },
+  { path: 'user-detail/:id', component: UserDetailComponent },
   { path: 'manage-documents', component: ManageDocumentsComponent },
   { path: 'logout', component: LogoutComponent }
 ];

@@ -35,6 +35,10 @@
   text-align: center;
 }
 
+.no-underline{
+  text-decoration: none;
+}
+
 .aqua-button {
   background-color: aqua;
 }
@@ -163,6 +167,10 @@
 .manage-user-page-container {
   padding: 10px;
   padding-top: 20px;
+}
+
+.user-detail-container{
+padding-top: 30px;
 }
 
 /* Manage Document Page */
