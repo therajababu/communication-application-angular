@@ -1,0 +1,264 @@
+/* Common CSS */
+.body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-custom-button {
+  border-radius: 10px;
+  padding: 3px;
+  width: 130px;
+  background-color: white;
+  border: 2px solid black;
+}
+.form-table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: separate;
+  border-spacing: 2em 2em;
+}
+
+.form-lable-right {
+  text-align: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.form-input-field {
+  border-radius: 5px;
+}
+
+.form-page-container {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.no-underline{
+  text-decoration: none;
+}
+
+.aqua-button {
+  background-color: aqua;
+}
+
+.grey-button {
+  background-color: grey;
+  border-radius: 10px;
+  padding: 3px;
+  min-width: 100px;
+  color: black;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.question-img {
+  width: 40px;
+}
+
+/* Custom Table */
+
+.table-container {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.table-tr-grey {
+  background-color: rgb(200, 200, 200);
+}
+
+/* Navigation Bar  */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_topnav_equal_width */
+
+.navbar {
+  width: 100%;
+  background-color: grey;
+  padding: 0;
+  overflow: auto;
+}
+
+.navbar a {
+  width: 25%;
+  background-color: grey;
+  text-decoration: none;
+  text-align: center;
+  font-size: 17px;
+  padding: 12px;
+  color: black;
+  float: left;
+
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+.navbar a:hover {
+  background-color: white;
+}
+.navbar a.active {
+  background-color: white;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Register Page */
+
+.register-page-container {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.register-page-input {
+  border-radius: 5px;
+}
+
+/* Group Chat Page */
+
+.chat-window {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  border: 2px solid black;
+}
+
+.group-chat-box {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  min-height: 300px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.group-chat-send-box {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.group-chat-button {
+  border-radius: 10px;
+  background-color: white;
+}
+
+.grou-chat-msg-input {
+  border-radius: 5px;
+  width: 100%;
+}
+
+.group-chat-cross-button {
+  border-radius: 5px;
+}
+
+/* Mange Users Page */
+
+.manage-user-page-container {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.user-detail-container{
+padding-top: 30px;
+}
+
+/* Manage Document Page */
+
+.manage-doc-page-container {
+  padding-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* Confirm Modal */
+
+.confirm-modal-footer {
+  border-top: none;
+  justify-content: center;
+}
+
+.confirm-modal-content {
+  width: 350px;
+}
+
+.modal-button {
+  border-radius: 10px;
+  padding: 3px;
+  min-width: 100px;
+  background-color: white;
+  color: black;
+}
+
+.add-document-button {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 3px;
+  background-color: aqua;
+  border-radius: 10px;
+  width: 180px;
+  border: 1px solid black;
+}
+
+.add-document-modal-footer {
+  border-top: none;
+  justify-content: left;
+}
+
+.choose-file-input {
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.input-file-modal {
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+/* Manage Document Page */
+
+.add-sharing-container {
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.add-sharing-row {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.manage-documents-dropdown-list {
+  width: 80%;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+/* Login Page */
+
+.login-page-container {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.share-page-container {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.zero-padding {
+  padding: 0px;
+}
+
+.upload-sharing-title {
+  font-size: 21px;
+}
