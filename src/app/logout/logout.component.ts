@@ -7,7 +7,7 @@ import { UtilsService } from '../utils.service';
   styleUrls: ['./logout.component.scss']
 })
 export class LogoutComponent implements OnInit {
-   
+
   constructor(
     private UtilsService: UtilsService,
   ) { }

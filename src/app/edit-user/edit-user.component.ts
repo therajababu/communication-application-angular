@@ -30,14 +30,12 @@ export class EditUserComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.userToEdit = this.UtilsService.getUserById(id);
 
-
     this.editUserForm = this.fb.group({
       fullName: [this.userToEdit.fullName, [Validators.required, Validators.minLength(3)]],
       email: [this.userToEdit.email, [Validators.required, Validators.email]]
     })
 
   }
-
 
   editUserSave() {
     let fullName = this.editUserForm.get('fullName').value;
@@ -50,11 +48,7 @@ export class EditUserComponent implements OnInit {
         break;
       }
     }
-
     this.UtilsService.setToLocalStorage("users", this.users);
-
     this.router.navigate(['/users-management']);
   }
-
-  
 }

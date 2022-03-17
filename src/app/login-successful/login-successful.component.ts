@@ -13,14 +13,14 @@ export class LoginSuccessfulComponent implements OnInit {
   constructor(
     private UtilsService: UtilsService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.LOGGED_IN_USER_ID = this.UtilsService.loggedInUserId();
     console.log("Login Successful: LOGGED_IN_USER_ID - ", this.LOGGED_IN_USER_ID);
-    if(this.LOGGED_IN_USER_ID === null){
+    if (this.LOGGED_IN_USER_ID === null) {
       this.router.navigateByUrl('/welcome');
-    } else{
+    } else {
       this.userEmail = this.UtilsService.getUserById(this.LOGGED_IN_USER_ID).email;
     }
   }

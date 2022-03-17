@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  register() : void{
+  register(): void {
     let users = this.UtilsService.getFromLocalStorage("users");
 
     let fullName = this.registerForm.get('fullName')?.value;
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     let password = this.registerForm.get('password')?.value;
     let confirmPassword = this.registerForm.get('confirmPassword')?.value;
 
-    if(!this.UtilsService.isEmailValid(email)){
+    if (!this.UtilsService.isEmailValid(email)) {
       // email is invalid
       alert("Email is invalid!");
       return;

@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'chat', component: GroupChatComponent },
   { path: 'users-management', component: UsersManagementComponent },
   { path: 'edit-user/:id', component: EditUserComponent },
+  { path: 'user-detail', redirectTo: 'users-management' },
   { path: 'user-detail/:id', component: UserDetailComponent },
   { path: 'manage-documents', component: ManageDocumentsComponent },
   { path: 'share', redirectTo: 'manage-documents' },

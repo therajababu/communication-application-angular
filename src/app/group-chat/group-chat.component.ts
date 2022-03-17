@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilsService } from '../utils.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Imessage } from '../imessage';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class GroupChatComponent implements OnInit {
   LOGGED_IN_USER_ID: any;
   fullName: string;
-  messages: any[];
+  messages: Imessage[];
   displayMessages: any[];
   messageForm: FormGroup;
 
@@ -30,7 +31,7 @@ export class GroupChatComponent implements OnInit {
 
     // convert to string
     this.displayMessages = this.messages.map(msg => {
-      let thisMsg = `[ ${msg.timestamp} ] ${this.UtilsService.getUserById(msg.senderId).fullName} : ${msg.msg}`;
+      let thisMsg = `[ ${msg.timestamp.toLocaleString()} ] ${this.UtilsService.getUserById(msg.senderId).fullName} : ${msg.msg}`;
       return thisMsg;
     })
 
@@ -41,6 +42,7 @@ export class GroupChatComponent implements OnInit {
 
   onSend() {
     this.messages = this.UtilsService.getFromLocalStorage("messages");
+
     let newMsgObj = {
       id: "M" + Number(new Date()),
       timestamp: new Date().toLocaleString(),

@@ -17,7 +17,8 @@
                         <input type="text" class="form-input-field" formControlName="email"
                             placeholder="Enter your email">
                         <div *ngIf="loginForm.get('email')?.errors?.['required']">Enter your email.</div>
-                        <div *ngIf="loginForm.get('email')?.errors?.['minlength']">Email must be atleast 5 characters longer
+                        <div *ngIf="loginForm.get('email')?.errors?.['minlength']">Email must be atleast 5 characters
+                            longer
                         </div>
                     </td>
                 </tr>
@@ -27,8 +28,9 @@
                         <input type="password" class="form-input-field" formControlName="password"
                             placeholder="Enter your password">
                         <div *ngIf="loginForm.get('password').errors?.['required']">Enter your password.</div>
-                        <div *ngIf="loginForm.get('password').errors?.['minlength']">Password must be atleast 4 characters
-                        longer</div>
+                        <div *ngIf="loginForm.get('password').errors?.['minlength']">Password must be atleast 4
+                            characters longer
+                        </div>
                     </td>
                 </tr>
                 <tr>

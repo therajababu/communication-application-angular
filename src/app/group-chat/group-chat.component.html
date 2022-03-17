@@ -13,7 +13,6 @@
         <div *ngFor="let msg of displayMessages">
             {{msg}}
         </div>
-
     </div>
     <!-- Chat Footer -->
     <form novalidate [formGroup]="messageForm" (submit)="onSend()">

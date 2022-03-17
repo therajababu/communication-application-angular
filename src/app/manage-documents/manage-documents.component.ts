@@ -57,7 +57,6 @@ export class ManageDocumentsComponent implements OnInit {
     this.editDocForm.patchValue({
       fileLabel: this.UtilsService.getDocByID(this.EDIT_DOC_ID).label
     })
-
   }
 
   docEditOk() {
@@ -81,17 +80,13 @@ export class ManageDocumentsComponent implements OnInit {
   }
 
   docDeleteOk() {
-    if(this.DELETE_DOC_ID){
+    if (this.DELETE_DOC_ID) {
       this.docs = this.docs.filter(doc => doc.id !== this.DELETE_DOC_ID);
       // delete shared doc too
     }
     this.UtilsService.setToLocalStorage("docs", this.docs);
-
     this.ngOnInit();
-
   }
-
-
 
   addUploadSave() {
     let fileLabel = this.addDocForm.get('fileLabel')?.value;

@@ -13,7 +13,7 @@ export class ShareComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.UtilsService.allowOnlyAuthUser();
+    this.UtilsService.allowOnlyAuthUser();
   }
 
 }
