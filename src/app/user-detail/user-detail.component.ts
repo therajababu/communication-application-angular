@@ -16,6 +16,8 @@ export class UserDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.UtilsService.allowOnlyAuthUser();
+
     const id = this.route.snapshot.paramMap.get('id');
     this.user = this.UtilsService.getUserById(id);
   }

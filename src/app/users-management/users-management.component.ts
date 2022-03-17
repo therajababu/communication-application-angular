@@ -10,6 +10,8 @@ import { UtilsService } from '../utils.service';
 export class UsersManagementComponent implements OnInit {
 
   users: any[];
+  LOGGED_IN_USER_ID : string ;
+  DELETE_USER_ID: string = null;
 
   constructor(
     private UtilsService: UtilsService,
@@ -17,7 +19,28 @@ export class UsersManagementComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.UtilsService.allowOnlyAuthUser();
+
     this.users = this.UtilsService.getFromLocalStorage("users");
+    this.LOGGED_IN_USER_ID = this.UtilsService.getFromLocalStorage("LOGGED_IN_USER_ID");
   }
 
+  delete(id) {
+    this.DELETE_USER_ID = id;
+  }
+
+  userDeleteOk() {
+    // delete user
+    this.users = this.users.filter(user => user.id !== this.DELETE_USER_ID);
+    this.UtilsService.setToLocalStorage("users", this.users);
+
+    // delete messages
+    let messages = this.UtilsService.getFromLocalStorage("messages");
+    messages = messages.filter(msg => msg.senderId !== this.DELETE_USER_ID);
+    this.UtilsService.setToLocalStorage("messages", messages);
+
+    // delete documents
+
+    // delete shared docuemnts
+  }
 }

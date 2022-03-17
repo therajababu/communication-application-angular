@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container form-page-container">
+    <h4>Edit User Information</h4>
+    <!-- Start: Form-->
+    <form novalidate [formGroup]="editUserForm" (submit)="editUserSave()" required>
+        <table class="form-table">
+            <tr>
+                <td class="text-right"><label for="text">Full Name</label></td>
+                <td><input type="text" formControlName="fullName" id="fullName" class="form-input-field"
+                        placeholder="Enter Name" vaue="userToEdit.fullName">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right"><label for="email">Email</label></td>
+                <td><input type="email" formControlName="email" id="email" class="form-input-field"
+                        placeholder="Enter Email">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="form-custom-button aqua-button" [disabled]="!editUserForm.valid">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <!-- End: Form-->
+</div>

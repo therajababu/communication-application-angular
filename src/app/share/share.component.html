@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid share-page-container">
+    <p class="upload-sharing-title"><b>Upload Sharing :</b> <span id="share-page-doc-name"></span></p>
+    <div class="table-container">
+        <table class="table  table-bordered table-striped custom-table">
+            <thead>
+                <tr class="table-tr-grey">
+                    <th>Shared User</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody id="my-shared-doc-list-table-body"> 
+                <!-- dynamic display -->
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <h4>Add Sharing</h4>
+    <div class="container-fluid add-sharing-container zero-padding">
+        <div class="row add-sharing-row">
+            <div class="col-sm-2 text-right">
+                Choose User :
+            </div>
+            <div class="col-sm-5">
+                <select class="text-center manage-documents-dropdown-list" name="selectedUser" id="selectedUser">
+                    <!-- from JS -->
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <button class="grey-button" value="" id="add-share-btn" onclick="addShareBtnClick()">Add Share</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start: Delete Document Modal -->
+<div class="modal fade" id="deleteDocumentModal" tabindex="-1" aria-labelledby="deleteDocumentModal"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content confirm-modal-content ">
+            <div class="modal-header">
+                <p class="modal-title" id="deleteDocumentModal">Confirm From Web Page</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    <br>
+                    <img src="./assets/images/question.png" class="question-img">
+                    Are you sure ?
+                </p>
+            </div>
+            <div class="modal-footer confirm-modal-footer">
+                <button type="button " class="btn btn-secondary modal-button" data-bs-dismiss="modal" onclick="deleteSharedDocOkBtn()">Ok</button>
+                <button type="button " class="btn btn-secondary modal-button" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Delete Document Modal -->

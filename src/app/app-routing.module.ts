@@ -10,6 +10,8 @@ import { UsersManagementComponent } from './users-management/users-management.co
 import { ManageDocumentsComponent } from './manage-documents/manage-documents.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { ShareComponent } from './share/share.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -20,8 +22,11 @@ const routes: Routes = [
   { path: 'register-successful', component: RegisterSuccessfulComponent },
   { path: 'chat', component: GroupChatComponent },
   { path: 'users-management', component: UsersManagementComponent },
+  { path: 'edit-user/:id', component: EditUserComponent },
   { path: 'user-detail/:id', component: UserDetailComponent },
   { path: 'manage-documents', component: ManageDocumentsComponent },
+  { path: 'share', redirectTo: 'manage-documents' },
+  { path: 'share/:id', component: ShareComponent },
   { path: 'logout', component: LogoutComponent }
 ];
 

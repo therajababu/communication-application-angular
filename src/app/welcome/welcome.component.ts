@@ -16,10 +16,10 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // const LOGGED_IN_USER_ID = this.UtilsService.getFromLocalStorage("LOGGED_IN_USER_ID");
-    // if(LOGGED_IN_USER_ID !== null){
-    //   // this.router.navigateByUrl('/login-successful');
-    // }
+    const LOGGED_IN_USER_ID = this.UtilsService.getFromLocalStorage("LOGGED_IN_USER_ID");
+    if(LOGGED_IN_USER_ID !== null){
+      // this.router.navigateByUrl('/login-successful');
+    }
   }
 
 }

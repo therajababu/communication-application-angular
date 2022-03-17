@@ -21,10 +21,12 @@ export class GroupChatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.UtilsService.allowOnlyAuthUser();
+
     this.LOGGED_IN_USER_ID = this.UtilsService.loggedInUserId();
     this.fullName = this.UtilsService.getUserById(this.LOGGED_IN_USER_ID).fullName;
     this.messages = this.UtilsService.getFromLocalStorage("messages");
-    console.log(this.messages);
+    // console.log(this.messages);
 
     // convert to string
     this.displayMessages = this.messages.map(msg => {

@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { ShareComponent } from './share/share.component';
 
 @NgModule({
   declarations: [ // we need to add all components
@@ -30,7 +32,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     GroupChatComponent,
     NavbarComponent,
     LogoutComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    EditUserComponent,
+    ShareComponent
   ],
   imports: [  // importing all modules
     BrowserModule,

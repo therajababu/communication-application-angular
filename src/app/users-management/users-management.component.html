@@ -20,10 +20,12 @@
                     </td>
                     <td class="text-center">{{user.email}}</td>
                     <td class="text-center">
-                        <a [routerLink]="['/edit-users', user.id]"><button type="button" id={{user.id}}
+                        <a [routerLink]="['/edit-user', user.id]"><button type="button" id={{user.id}}
                                 class="btn ">Edit</button></a> |
-                        <button type="button" id={{user.id}} class="btn" data-bs-toggle="modal"
-                            data-bs-target="#deleteUserModal">
+                        <button type="button" id={{user.id}} class="btn" (click)="delete(user.id)" data-bs-toggle="modal"
+                            data-bs-target="#deleteUserModal"
+                            [disabled]="user.id == LOGGED_IN_USER_ID"
+                            >
                             Delete
                         </button>
                     </td>
@@ -50,7 +52,7 @@
             </div>
             <div class="modal-footer confirm-modal-footer">
                 <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal"
-                    onclick="userDeleteOk()">Ok</button>
+                    (click)="userDeleteOk()">Ok</button>
                 <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>

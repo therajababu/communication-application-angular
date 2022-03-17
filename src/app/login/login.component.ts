@@ -21,6 +21,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const LOGGED_IN_USER_ID = this.UtilsService.getFromLocalStorage("LOGGED_IN_USER_ID");
+    // if(LOGGED_IN_USER_ID !== null){
+    //   alert(LOGGED_IN_USER_ID);
+    //   this.router.navigateByUrl('/login-successful');
+    // }
+    
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(4)]]

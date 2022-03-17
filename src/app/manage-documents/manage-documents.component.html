@@ -1,2 +1,161 @@
 <app-navbar></app-navbar>
-<p>manage-documents works!</p>
+<div class="manage-doc-page-container">
+    <h4>My Uploads</h4>
+    <div class="table-container">
+        <table class="table  table-bordered table-striped table-responsive">
+            <thead>
+                <tr class="table-tr-grey">
+                    <th>Label</th>
+                    <th class="text-center">File Name</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody id="my-uploads-list-table-body">
+                <tr *ngFor="let doc of myUploads">
+                    <td>{{doc.label}}</td>
+                    <td class="text-center">{{doc.fileName}}</td>
+                    <td class="text-center">
+                        <button type="button" id="{{doc.id}}" (click)="docEdit(doc.id)" class="btn"
+                            data-bs-toggle="modal" data-bs-target="#editDocumentModal">
+                            Edit
+                        </button> |
+                        <button type="button" id="{{doc.id}}" (click)="docDelete(doc.id)" class="btn"
+                            data-bs-toggle="modal" data-bs-target="#deleteDocumentModal">
+                            Delete
+                        </button> |
+                        <a [routerLink]="['/share', doc.id]"><button type="button" class="btn ">Share</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <h4>Shared Uploads</h4>
+    <div class="table-container">
+        <table class="table  table-bordered table-striped table-responsive">
+            <thead>
+                <tr class="table-tr-grey">
+                    <th>Label</th>
+                    <th class="text-center">File Name</th>
+                    <th class="text-center">Shared By</th>
+                </tr>
+            </thead>
+            <tbody id="shared-uploads-list-table-body">
+                <!-- dynamic list -->
+            </tbody>
+        </table>
+        <button type="button" class="btn add-document-button" data-bs-toggle="modal" data-bs-target="#addDocumentModal">
+            + Add Upload
+        </button>
+    </div>
+</div>
+
+<!-- Start: Add Document Modal -->
+<div class="modal fade" id="addDocumentModal" tabindex="-1" aria-labelledby="addDocumentModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="addDocumentModal">Upload</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form novalidate [formGroup]="addDocForm" (submit)="addUploadSave()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            File Description
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" class="input-file-modal" id="selectedFileLabel"
+                                formControlName="fileLabel" placeholder="Enter file description">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            File Upload
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="file" class="choose-file-input" name="selectedFile" id="selectedFile"
+                                formControlName="fileName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer add-document-modal-footer">
+                    <button type="submit" id="add-upload-save-btn" class="btn btn-secondary grey-button"
+                        data-bs-dismiss="modal" [disabled]="!addDocForm.valid">
+                        Save
+                    </button>
+
+                    <button type="button" class="btn btn-secondary grey-button" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- End: Add Document Modal -->
+
+
+<!-- Start: Edit Document Modal -->
+<div class="modal fade" id="editDocumentModal" onload="onLoadEditDocModal()" tabindex="-1"
+    aria-labelledby="editDocumentModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="editDocumentModal">Edit Document</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form novalidate [formGroup]="editDocForm" (submit)="docEditOk()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            File Description
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" id="edit-file-label-modal-input" class="input-file-modal"
+                                placeholder="Enter file description" formControlName="fileLabel">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer confirm-modal-footer">
+                    <button type="submit" class="btn btn-secondary modal-button grey-button" data-bs-dismiss="modal"
+                        [disabled]="!editDocForm.valid">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-secondary modal-button grey-button" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End: Edit Document Modal -->
+
+<!-- Start: Delete Document Modal -->
+<div class="modal fade" id="deleteDocumentModal" tabindex="-1" aria-labelledby="deleteDocumentModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content confirm-modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="deleteDocumentModal">Confirm File Deletion</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    <br>
+                    <img src="./assets/images/question.png" class="question-img">
+                    Are you sure ?
+                </p>
+            </div>
+            <div class="modal-footer confirm-modal-footer">
+                <button type="button " class="btn btn-secondary modal-button" data-bs-dismiss="modal"
+                    (click)="docDeleteOk()">Ok</button>
+                <button type="button " class="btn btn-secondary modal-button" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Delete Document Modal -->

@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   setToLocalStorage(key: string, value: any) {
     // key is string and values is array of objects
@@ -50,6 +54,21 @@ export class UtilsService {
         delete user.password;
         return user;
       }
+    }
+  }
+
+  getDocByID(id: string){
+    let docs = this.getFromLocalStorage("docs");
+    for (let i = 0; i < docs.length; i++) {
+        if (docs[i].id == id) {
+            return docs[i];
+        }
+    }
+  }
+
+  allowOnlyAuthUser(){
+    if(this.loggedInUserId() == null){
+      this.router.navigateByUrl('/welcome');
     }
   }
 
